@@ -8,7 +8,7 @@ import {
     RepeatWrapping,
     DirectionalLight,
     Vector3,
-    AxesHelper,
+    AxesHelper, Color, CubeTextureLoader,
 } from './lib/three.module.js';
 
 import Utilities from './lib/Utilities.js';
@@ -22,6 +22,16 @@ import { SimplexNoise } from './lib/SimplexNoise.js';
 async function main() {
 
     const scene = new Scene();
+
+    scene.background = new CubeTextureLoader().load([
+        '../resources/images/sh_rt.png',
+        '../resources/images/sh_lf.png',
+        '../resources/images/sh_up.png',
+        '../resources/images/sh_dn.png',
+        '../resources/images/sh_ft.png',
+        '../resources/images/sh_bk.png'
+    ])
+
 
     const axesHelper = new AxesHelper(15);
     scene.add(axesHelper);
