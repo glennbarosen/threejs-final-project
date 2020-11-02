@@ -23,13 +23,13 @@ async function main() {
 
     const scene = new Scene();
 
-    scene.background = new CubeTextureLoader().load([
-        '../resources/images/sh_rt.png',
-        '../resources/images/sh_lf.png',
-        '../resources/images/sh_up.png',
-        '../resources/images/sh_dn.png',
-        '../resources/images/sh_ft.png',
-        '../resources/images/sh_bk.png'
+    scene.background = new CubeTextureLoader().setPath('./resources/images/').load([
+        'sh_rt.png',
+        'sh_lf.png',
+        'sh_up.png',
+        'sh_dn.png',
+        'sh_ft.png',
+        'sh_bk.png'
     ])
 
 
