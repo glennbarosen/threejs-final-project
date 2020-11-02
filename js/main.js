@@ -8,8 +8,7 @@ import {
     RepeatWrapping,
     DirectionalLight,
     Vector3,
-    AxesHelper, Color, CubeTextureLoader,
-} from './lib/three.module.js';
+    AxesHelper, CubeTextureLoader, BoxGeometry, MeshBasicMaterial} from './lib/three.module.js';
 
 import Utilities from './lib/Utilities.js';
 import MouseLookController from './controls/MouseLookController.js';
@@ -119,7 +118,14 @@ async function main() {
     snowyRockTexture.repeat.set(1500 / width, 1500 / width);
 
 
-    const splatMap = new TextureLoader().load('resources/images/splatmap_01.png');
+    const splatMap = new TextureLoader().load('resources/images/splatmap.png');
+
+    const geo = new BoxGeometry(100, 1, 100)
+    const mat = new MeshBasicMaterial({color: 0x2389da, transparent: true, opacity:0.7})
+    const water = new Mesh(geo, mat)
+    scene.add(water)
+    water.position.set(0,4,0)
+
 
     const terrainMaterial = new TextureSplattingMaterial({
         color: 0xffffff,

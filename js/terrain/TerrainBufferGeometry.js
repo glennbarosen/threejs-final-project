@@ -7,7 +7,7 @@ import { PlaneBufferGeometry } from '../lib/three.module.js';
 
 export default class TerrainBufferGeometry extends PlaneBufferGeometry {
 
-    constructor({ heightmapImage, noiseFn = null, width = 100, numberOfSubdivisions = 128, height = 20 }) {
+    constructor({ heightmapImage, noiseFn = null, width = 100, numberOfSubdivisions = 1000, height = 20 }) {
 
         super(width, width, numberOfSubdivisions, numberOfSubdivisions);
 
