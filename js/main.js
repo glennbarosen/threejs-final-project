@@ -8,7 +8,8 @@ import {
     RepeatWrapping,
     DirectionalLight,
     Vector3,
-    AxesHelper, CubeTextureLoader, BoxGeometry, MeshBasicMaterial} from './lib/three.module.js';
+    AxesHelper, CubeTextureLoader, BoxGeometry, MeshBasicMaterial, PlaneGeometry, Object3D
+} from './lib/three.module.js';
 
 import Utilities from './lib/Utilities.js';
 import MouseLookController from './controls/MouseLookController.js';
@@ -17,6 +18,7 @@ import TextureSplattingMaterial from './materials/TextureSplattingMaterial.js';
 import TerrainBufferGeometry from './terrain/TerrainBufferGeometry.js';
 import { GLTFLoader } from './loaders/GLTFLoader.js';
 import { SimplexNoise } from './lib/SimplexNoise.js';
+import FlyingParrot from "./FlyingParrot.js";
 
 async function main() {
 
@@ -120,11 +122,19 @@ async function main() {
 
     const splatMap = new TextureLoader().load('resources/images/splatmap.png');
 
+    // water
+    const geo1 = new PlaneGeometry(100, 100, 100, 100)
+
     const geo = new BoxGeometry(100, 1, 100)
     const mat = new MeshBasicMaterial({color: 0x2389da, transparent: true, opacity:0.7})
-    const water = new Mesh(geo, mat)
+    const water = new Mesh(geo1, mat)
+    water.rotation.x = -Math.PI /2
+
     scene.add(water)
+
     water.position.set(0,4,0)
+
+
 
 
     const terrainMaterial = new TextureSplattingMaterial({
@@ -192,6 +202,12 @@ async function main() {
             console.error('Error loading model.', error);
         }
     );
+
+    const flyingParrot = new FlyingParrot(scene)
+
+
+
+
 
     /**
      * Set up camera controller:
@@ -268,6 +284,7 @@ async function main() {
 
     let then = performance.now();
     function loop(now) {
+        flyingParrot.animate()
 
         const delta = now - then;
         then = now;
@@ -309,7 +326,6 @@ async function main() {
     };
 
     loop(performance.now());
-
 }
 
 main(); // Start application
