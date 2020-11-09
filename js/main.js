@@ -8,7 +8,7 @@ import {
     RepeatWrapping,
     DirectionalLight,
     Vector3,
-    AxesHelper, CubeTextureLoader, BoxGeometry, MeshBasicMaterial, PlaneGeometry, Object3D
+    AxesHelper, CubeTextureLoader
 } from './lib/three.module.js';
 
 import Utilities from './lib/Utilities.js';
@@ -19,6 +19,8 @@ import TerrainBufferGeometry from './terrain/TerrainBufferGeometry.js';
 import { GLTFLoader } from './loaders/GLTFLoader.js';
 import { SimplexNoise } from './lib/SimplexNoise.js';
 import FlyingParrot from "./FlyingParrot.js";
+import Water from "./Water.js";
+import Sun from "./Sun.js";
 
 async function main() {
 
@@ -67,22 +69,7 @@ async function main() {
     /**
      * Add light
      */
-    const directionalLight = new DirectionalLight(0xffffff);
-    directionalLight.position.set(300, 400, 0);
 
-    directionalLight.castShadow = true;
-
-    //Set up shadow properties for the light
-    directionalLight.shadow.mapSize.width = 512;
-    directionalLight.shadow.mapSize.height = 512;
-    directionalLight.shadow.camera.near = 0.5;
-    directionalLight.shadow.camera.far = 2000;
-
-    scene.add(directionalLight);
-
-    // Set direction
-    directionalLight.target.position.set(0, 15, 0);
-    scene.add(directionalLight.target);
 
     camera.position.z = 70;
     camera.position.y = 55;
@@ -123,16 +110,10 @@ async function main() {
     const splatMap = new TextureLoader().load('resources/images/splatmap.png');
 
     // water
-    const geo1 = new PlaneGeometry(100, 100, 100, 100)
+    const water = new Water(scene)
 
-    const geo = new BoxGeometry(100, 1, 100)
-    const mat = new MeshBasicMaterial({color: 0x2389da, transparent: true, opacity:0.7})
-    const water = new Mesh(geo1, mat)
-    water.rotation.x = -Math.PI /2
+    const sun = new Sun(scene)
 
-    scene.add(water)
-
-    water.position.set(0,4,0)
 
 
 
@@ -285,6 +266,11 @@ async function main() {
     let then = performance.now();
     function loop(now) {
         flyingParrot.animate()
+        water.updateWater()
+        water.createWave()
+
+        sun.animate()
+
 
         const delta = now - then;
         then = now;
