@@ -21,12 +21,9 @@ import { SimplexNoise } from './lib/SimplexNoise.js';
 import FlyingParrot from "./FlyingParrot.js";
 import Water from "./Water.js";
 import Sun from "./Sun.js";
-<<<<<<< HEAD
 import Sphere1 from "./Sphere1.js";
-
-=======
 import Trees from "./Trees.js";
->>>>>>> dd5a518af23efc0c4fd6c75d5c60cd14a02ea663
+
 
 async function main() {
 
@@ -154,7 +151,7 @@ async function main() {
     const treesUrl = "resources/models/kenney_nature_kit/tree_thin.glb";
     const trees = new Trees(scene, treesUrl, terrain.geometry);
     const treeGrid = [terrainWidth, terrainWidth];
-    const minDist = 2;
+    const minDist = 3;
     const maxDist = 15;
     const minHeight = 4;
     const maxHeight = 10;
