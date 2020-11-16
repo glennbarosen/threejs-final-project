@@ -7,8 +7,10 @@ import {
     Mesh,
     AmbientLight,
     PointLight,
-    Object3D
+    Object3D,
+    Color
 } from "./lib/three.module.js";
+import CustomShader from "./materials/CustomShader.js";
 
 
 export default class Sun {
@@ -19,9 +21,10 @@ export default class Sun {
         let sunGeometry = new SphereGeometry(radius, widthSegments, heightSegments)
         let sunTextureUrl = 'resources/textures/texture_sun.jpg';
         let sunTexture = new TextureLoader().load(sunTextureUrl);
-        let sunMaterial = new MeshPhongMaterial({map:sunTexture,
-            shininess:1.0,
-        });
+        let sunMaterial = new CustomShader({
+            mapInParameters: sunTexture,
+            colorInParameters: new Color(0x00FF00)
+        })
 
         this.orbit = new Object3D()
         scene.add(this.orbit)
@@ -32,7 +35,7 @@ export default class Sun {
         this.orbit.add(this.sun)
         this.sun.position.x = 80
 
-        this.sunLight = new PointLight(0xffffff, 1.5);
+        this.sunLight = new PointLight(0xffffff, 0.7);
         //Legger lyset som barn av solen
         this.sun.add(this.sunLight);
 

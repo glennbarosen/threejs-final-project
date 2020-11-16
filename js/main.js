@@ -21,8 +21,11 @@ import { SimplexNoise } from './lib/SimplexNoise.js';
 import FlyingParrot from "./FlyingParrot.js";
 import Water from "./Water.js";
 import Sun from "./Sun.js";
+import Trees from "./Trees.js";
 
 async function main() {
+
+    const terrainWidth=100
 
     const scene = new Scene();
 
@@ -75,6 +78,10 @@ async function main() {
     camera.position.y = 55;
     camera.rotation.x -= Math.PI * 0.25;
 
+    // raycaster
+
+
+
 
     /**
      * Add terrain:
@@ -118,6 +125,9 @@ async function main() {
 
 
 
+
+
+
     const terrainMaterial = new TextureSplattingMaterial({
         color: 0xffffff,
         shininess: 0,
@@ -137,52 +147,14 @@ async function main() {
      */
 
     // instantiate a GLTFLoader:
-    const loader = new GLTFLoader();
-
-    loader.load(
-        // resource URL
-        'resources/models/kenney_nature_kit/tree_thin.glb',
-        // called when resource is loaded
-        (object) => {
-            for (let x = -50; x < 50; x += 8) {
-                for (let z = -50; z < 50; z += 8) {
-                    
-                    const px = x + 1 + (6 * Math.random()) - 3;
-                    const pz = z + 1 + (6 * Math.random()) - 3;
-
-                    const height = terrainGeometry.getHeightAt(px, pz);
-
-                    if (height > 5 && height < 7) {
-                        const tree = object.scene.children[0].clone();
-
-                        tree.traverse((child) => {
-                            if (child.isMesh) {
-                                child.castShadow = true;
-                                child.receiveShadow = true;
-                            }
-                        });
-                        
-                        tree.position.x = px;
-                        tree.position.y = height - 0.01;
-                        tree.position.z = pz;
-
-                        tree.rotation.y = Math.random() * (2 * Math.PI);
-
-                        tree.scale.multiplyScalar(1.5 + Math.random() * 1);
-
-                        scene.add(tree);
-                    }
-
-                }
-            }
-        },
-        (xhr) => {
-            console.log(((xhr.loaded / xhr.total) * 100) + '% loaded');
-        },
-        (error) => {
-            console.error('Error loading model.', error);
-        }
-    );
+    const treesUrl = "resources/models/kenney_nature_kit/tree_thin.glb";
+    const trees = new Trees(scene, treesUrl, terrain.geometry);
+    const treeGrid = [terrainWidth, terrainWidth];
+    const minDist = 2;
+    const maxDist = 15;
+    const minHeight = 4;
+    const maxHeight = 10;
+    trees.generateTrees(treeGrid, minDist, maxDist, minHeight, maxHeight);
 
     const flyingParrot = new FlyingParrot(scene)
 
