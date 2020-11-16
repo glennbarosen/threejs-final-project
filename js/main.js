@@ -8,7 +8,7 @@ import {
     RepeatWrapping,
     DirectionalLight,
     Vector3,
-    AxesHelper, CubeTextureLoader
+    AxesHelper, CubeTextureLoader, Sphere, Raycaster
 } from './lib/three.module.js';
 
 import Utilities from './lib/Utilities.js';
@@ -21,6 +21,8 @@ import { SimplexNoise } from './lib/SimplexNoise.js';
 import FlyingParrot from "./FlyingParrot.js";
 import Water from "./Water.js";
 import Sun from "./Sun.js";
+import Sphere1 from "./Sphere1.js";
+
 
 async function main() {
 
@@ -114,8 +116,7 @@ async function main() {
 
     const sun = new Sun(scene)
 
-
-
+    const sphere1 = new Sphere1(scene)
 
 
     const terrainMaterial = new TextureSplattingMaterial({
@@ -185,8 +186,6 @@ async function main() {
     );
 
     const flyingParrot = new FlyingParrot(scene)
-
-
 
 
 

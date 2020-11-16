@@ -20,7 +20,7 @@ export default class Sun {
         let sunTextureUrl = 'resources/textures/texture_sun.jpg';
         let sunTexture = new TextureLoader().load(sunTextureUrl);
         let sunMaterial = new MeshPhongMaterial({map:sunTexture,
-            shininess:1.0,
+            shininess:1.0
         });
 
         this.orbit = new Object3D()
