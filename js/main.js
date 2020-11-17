@@ -8,7 +8,7 @@ import {
     RepeatWrapping,
     DirectionalLight,
     Vector3,
-    AxesHelper, CubeTextureLoader
+    AxesHelper, CubeTextureLoader, Sphere, Raycaster
 } from './lib/three.module.js';
 
 import Utilities from './lib/Utilities.js';
@@ -21,7 +21,9 @@ import { SimplexNoise } from './lib/SimplexNoise.js';
 import FlyingParrot from "./FlyingParrot.js";
 import Water from "./Water.js";
 import Sun from "./Sun.js";
+import Sphere1 from "./Sphere1.js";
 import Trees from "./Trees.js";
+
 
 async function main() {
 
@@ -121,8 +123,7 @@ async function main() {
 
     const sun = new Sun(scene)
 
-
-
+    const sphere1 = new Sphere1(scene)
 
 
 
@@ -150,15 +151,13 @@ async function main() {
     const treesUrl = "resources/models/kenney_nature_kit/tree_thin.glb";
     const trees = new Trees(scene, treesUrl, terrain.geometry);
     const treeGrid = [terrainWidth, terrainWidth];
-    const minDist = 2;
+    const minDist = 3;
     const maxDist = 15;
     const minHeight = 4;
     const maxHeight = 10;
     trees.generateTrees(treeGrid, minDist, maxDist, minHeight, maxHeight);
 
     const flyingParrot = new FlyingParrot(scene)
-
-
 
 
 

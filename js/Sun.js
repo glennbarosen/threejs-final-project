@@ -21,10 +21,12 @@ export default class Sun {
         let sunGeometry = new SphereGeometry(radius, widthSegments, heightSegments)
         let sunTextureUrl = 'resources/textures/texture_sun.jpg';
         let sunTexture = new TextureLoader().load(sunTextureUrl);
+
         let sunMaterial = new CustomShader({
             mapInParameters: sunTexture,
             colorInParameters: new Color(0x00FF00)
         })
+
 
         this.orbit = new Object3D()
         scene.add(this.orbit)
@@ -38,6 +40,8 @@ export default class Sun {
         this.sunLight = new PointLight(0xffffff, 0.7);
         //Legger lyset som barn av solen
         this.sun.add(this.sunLight);
+        this.sunLight.castShadow = true;
+
 
         //Legger til et mykere AmbientLight for å representere bakgrunnsbelysning - gjør at vi såvidt kan se baksiden av jorden vår
         this.ambientLight = new AmbientLight(0xffffff, 0.2);
@@ -47,7 +51,7 @@ export default class Sun {
     }
     animate() {
 
-        this.rotateObject(this.orbit, [0.0, 0.01, 0.0]);
+        this.rotateObject(this.orbit, [0.0, 0.005, 0.0]);
         this.rotateObject(this.sun, [0.0, 0.05, 0.0])
 
 

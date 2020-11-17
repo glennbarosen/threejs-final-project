@@ -69,6 +69,9 @@ export default class Trees {
 
                         model.scale.multiplyScalar(2 + Math.random() * 2);
 
+                        model.castShadow = true;
+                        model.receiveShadow = false;
+
                         this.scene.add(model);
                     }
                 }

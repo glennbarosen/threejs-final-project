@@ -7,7 +7,7 @@ export default class Water {
 
         this.vertexHeight = .7
 
-        this.waterGeometry = new PlaneGeometry(1000, 1000, 100, 100)
+        this.waterGeometry = new PlaneGeometry(10000, 10000, 100, 100)
         this. waterMaterial = new MeshBasicMaterial({
             color: 0x2389da,
 

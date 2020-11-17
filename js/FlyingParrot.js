@@ -16,6 +16,7 @@ export default class FlyingParrot {
         this.orbitNode.position.z = 30
         scene.add(this.orbitNode)
 
+
         let loader = new GLTFLoader()
         loader.load(
             // resource URL
@@ -29,7 +30,10 @@ export default class FlyingParrot {
                 parrotObj.rotation.y = -Math.PI
                 parrotObj.rotation.z = -Math.PI/4
                 parrotObj.position.x = 10
-                parrotObj.scale.multiplyScalar(0.02)
+                parrotObj.scale.multiplyScalar(0.06)
+
+                parrotObj.castShadow = true;
+
 
             },
             (xhr) => {
