@@ -24,12 +24,12 @@ import Sun from "./objects/Sun.js";
 import Sphere1 from "./objects/Sphere1.js";
 import Trees from "./objects/Trees.js";
 import Clouds from "./objects/Clouds.js";
-<<<<<<< HEAD
+
 import Boat from "./objects/Boat.js";
-=======
+
 import Ocean from "./objects/Ocean.js";
 
->>>>>>> a5ad7ea3bd8026888da32f1a35c603d5118f696d
+
 
 
 async function main() {
@@ -248,14 +248,8 @@ async function main() {
     let then = performance.now();
     function loop(now) {
         flyingParrot.animate()
-<<<<<<< HEAD
-        water.updateWater()
-        water.createWave()
         boat.animate()
-=======
         water.animateOcean()
-
->>>>>>> a5ad7ea3bd8026888da32f1a35c603d5118f696d
         sun.animate()
 
 
