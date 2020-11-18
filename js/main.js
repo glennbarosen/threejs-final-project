@@ -8,7 +8,8 @@ import {
     RepeatWrapping,
     DirectionalLight,
     Vector3,
-    AxesHelper, CubeTextureLoader, Sphere, Raycaster
+    AxesHelper, CubeTextureLoader, Sphere, Raycaster,
+    PlaneBufferGeometry
 } from './lib/three.module.js';
 
 import Utilities from './lib/Utilities.js';
@@ -19,11 +20,11 @@ import TerrainBufferGeometry from './terrain/TerrainBufferGeometry.js';
 import { GLTFLoader } from './loaders/GLTFLoader.js';
 import { SimplexNoise } from './lib/SimplexNoise.js';
 import FlyingParrot from "./objects/FlyingParrot.js";
-import Water from "./objects/Water.js";
 import Sun from "./objects/Sun.js";
 import Sphere1 from "./objects/Sphere1.js";
 import Trees from "./objects/Trees.js";
 import Clouds from "./objects/Clouds.js";
+import Ocean from "./objects/Ocean.js";
 
 
 
@@ -121,7 +122,11 @@ async function main() {
     const splatMap = new TextureLoader().load('resources/images/splatmap.png');
 
     // water
-    const water = new Water(scene)
+    // const water = new Water(scene)
+    const waterGeometry = new PlaneBufferGeometry( 10000, 10000 );
+
+    const water = new Ocean(1000, 1000, 'resources/textures/waternormals.jpg')
+    scene.add(water)
 
     const sun = new Sun(scene)
 
@@ -237,8 +242,7 @@ async function main() {
     let then = performance.now();
     function loop(now) {
         flyingParrot.animate()
-        water.updateWater()
-        water.createWave()
+        water.animateOcean()
 
         sun.animate()
 

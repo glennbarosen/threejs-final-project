@@ -40,10 +40,11 @@ export default class Sun {
         this.sunLight = new PointLight(0xffffff, 0.7);
         //Legger lyset som barn av solen
         this.sun.add(this.sunLight);
+        this.sunLight.castShadow = true
 
 
 
-        //Legger til et mykere AmbientLight for å representere bakgrunnsbelysning - gjør at vi såvidt kan se baksiden av jorden vår
+
         this.ambientLight = new AmbientLight(0xffffff, 0.2);
         scene.add(this.ambientLight); //Legg bakgrunnslyset til i scenen.
 
