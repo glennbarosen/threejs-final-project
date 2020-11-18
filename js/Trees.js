@@ -70,7 +70,7 @@ export default class Trees {
                         model.scale.multiplyScalar(2 + Math.random() * 2);
 
                         model.castShadow = true;
-                        model.receiveShadow = false;
+                        model.receiveShadow = true;
 
                         this.scene.add(model);
                     }

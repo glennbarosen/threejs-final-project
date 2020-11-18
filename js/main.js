@@ -23,6 +23,8 @@ import Water from "./Water.js";
 import Sun from "./Sun.js";
 import Sphere1 from "./Sphere1.js";
 import Trees from "./Trees.js";
+import Clouds from "./Clouds.js";
+
 
 
 async function main() {
@@ -125,9 +127,7 @@ async function main() {
 
     const sphere1 = new Sphere1(scene)
 
-
-
-
+    const clouds = new Clouds(scene)
 
     const terrainMaterial = new TextureSplattingMaterial({
         color: 0xffffff,
