@@ -2,8 +2,8 @@
 
 import {
     Object3D
-} from "./lib/three.module.js";
-import {GLTFLoader} from "./loaders/GLTFLoader.js";
+} from "../lib/three.module.js";
+import {GLTFLoader} from "../loaders/GLTFLoader.js";
 
 export default class FlyingParrot {
     constructor(scene) {

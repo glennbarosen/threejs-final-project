@@ -1,6 +1,6 @@
 "use strict"
 
-import {BoxGeometry, Mesh, MeshBasicMaterial, PlaneGeometry} from "./lib/three.module.js";
+import {BoxGeometry, Mesh, MeshBasicMaterial, PlaneGeometry} from "../lib/three.module.js";
 
 export default class Water {
     constructor(scene) {

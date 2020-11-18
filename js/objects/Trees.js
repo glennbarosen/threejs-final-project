@@ -1,8 +1,8 @@
 "use strict";
 
-import { TextureLoader, SpriteMaterial, Sprite } from "./lib/three.module.js";
-import Utilities from "./lib/Utilities.js";
-import { GLTFLoader } from "./loaders/GLTFLoader.js";
+import { TextureLoader, SpriteMaterial, Sprite } from "../lib/three.module.js";
+import Utilities from "../lib/Utilities.js";
+import { GLTFLoader } from "../loaders/GLTFLoader.js";
 
 /**
  * Class to generate trees in our terrain.

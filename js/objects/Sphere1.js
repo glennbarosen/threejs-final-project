@@ -5,7 +5,7 @@ import {
     MeshBasicMaterial,
     Mesh, Object3D, Color, Raycaster, TextureLoader, MeshPhongMaterial
 
-} from "./lib/three.module.js";
+} from "../lib/three.module.js";
 
 
 export default class Sphere1 {

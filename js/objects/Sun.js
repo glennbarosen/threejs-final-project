@@ -9,8 +9,8 @@ import {
     PointLight,
     Object3D,
     Color
-} from "./lib/three.module.js";
-import CustomShader from "./materials/CustomShader.js";
+} from "../lib/three.module.js";
+import CustomShader from "../materials/CustomShader.js";
 
 
 export default class Sun {

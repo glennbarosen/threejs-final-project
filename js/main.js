@@ -18,12 +18,12 @@ import TextureSplattingMaterial from './materials/TextureSplattingMaterial.js';
 import TerrainBufferGeometry from './terrain/TerrainBufferGeometry.js';
 import { GLTFLoader } from './loaders/GLTFLoader.js';
 import { SimplexNoise } from './lib/SimplexNoise.js';
-import FlyingParrot from "./FlyingParrot.js";
-import Water from "./Water.js";
-import Sun from "./Sun.js";
-import Sphere1 from "./Sphere1.js";
-import Trees from "./Trees.js";
-import Clouds from "./Clouds.js";
+import FlyingParrot from "./objects/FlyingParrot.js";
+import Water from "./objects/Water.js";
+import Sun from "./objects/Sun.js";
+import Sphere1 from "./objects/Sphere1.js";
+import Trees from "./objects/Trees.js";
+import Clouds from "./objects/Clouds.js";
 
 
 

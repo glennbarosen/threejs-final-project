@@ -1,4 +1,4 @@
-import {Object3D, Sprite, SpriteMaterial, TextureLoader} from "./lib/three.module.js";
+import {Object3D, Sprite, SpriteMaterial, TextureLoader} from "../lib/three.module.js";
 
 export default class Clouds extends Object3D {
     constructor(scene) {
