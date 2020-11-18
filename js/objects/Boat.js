@@ -48,7 +48,7 @@ export default class Boats {
 
     animate() {
 
-        this.rotateObject(this.boatOrbit, [0.0, 0.01, 0.0]);
+        this.rotateObject(this.boatOrbit, [0.0, 0.001, 0.0]);
 
 
     }
