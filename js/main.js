@@ -24,7 +24,7 @@ import Sun from "./objects/Sun.js";
 import Sphere1 from "./objects/Sphere1.js";
 import Trees from "./objects/Trees.js";
 import Clouds from "./objects/Clouds.js";
-
+import Boat from "./objects/Boat.js";
 
 
 async function main() {
@@ -129,6 +129,7 @@ async function main() {
 
     const clouds = new Clouds(scene)
 
+
     const terrainMaterial = new TextureSplattingMaterial({
         color: 0xffffff,
         shininess: 0,
@@ -159,6 +160,7 @@ async function main() {
 
     const flyingParrot = new FlyingParrot(scene)
 
+    const boat = new Boat(scene)
 
 
     /**
@@ -239,7 +241,7 @@ async function main() {
         flyingParrot.animate()
         water.updateWater()
         water.createWave()
-
+        boat.animate()
         sun.animate()
 
 
